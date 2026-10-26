@@ -2,403 +2,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#d8afb9">
-<title>Londyn Jade</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Londyn Jade ♡</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-:root {
-  --rose: #bd8795;
-  --deep-rose: #8d5262;
-  --white: #fffdfd;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-html {
-  min-height: 100%;
-  background: #d8afb9;
-}
+    :root {
+      --pink: #f6dce5;
+      --white: #fffafc;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: 28px 18px;
-  display: grid;
-  place-items: center;
-  position: relative;
-  isolation: isolate;
-  overflow-x: hidden;
-  font-family: Georgia, "Times New Roman", serif;
-  background: #d8afb9;
-  color: var(--deep-rose);
-}
+    html {
+      min-height: 100%;
+    }
 
-/* Full-screen background photo */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -2%;
-  z-index: -2;
-  background-image: url("londyn-photo.jpg");
-  background-size: cover;
-  background-position: center 35%;
-  background-repeat: no-repeat;
-  transform: scale(1.02);
-}
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      padding: 24px 16px;
+      background: #d9aeba;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+    }
 
-/* Soft rosy color grade */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(
-    135deg,
-    rgba(210, 145, 164, .40),
-    rgba(255, 226, 231, .28),
-    rgba(153, 95, 116, .30)
-  );
-}
+    /* Full-screen photo background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url("londyn-photo.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
 
-/* Main translucent card */
-.card {
-  position: relative;
-  z-index: 1;
-  isolation: isolate;
-  width: min(100%, 460px);
-  padding: 43px 30px 34px;
-  text-align: center;
-  color: var(--deep-rose);
-  background: rgba(255, 225, 232, .62);
-  border: 1.5px solid rgba(255, 255, 255, .95);
-  border-radius: 23px;
-  box-shadow: 0 15px 65px rgba(82, 39, 53, .16);
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
-}
+    /* Soft pink tint over the photo */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        135deg,
+        rgba(247, 211, 226, 0.18),
+        rgba(176, 103, 133, 0.12)
+      );
+      pointer-events: none;
+    }
 
-.eyebrow {
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  line-height: 1.8;
-  text-transform: uppercase;
-}
+    /* Floating stars and hearts */
+    .decoration {
+      position: fixed;
+      z-index: 0;
+      color: rgba(255, 255, 255, 0.94);
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.65);
+      pointer-events: none;
+      user-select: none;
+      animation: float 5s ease-in-out infinite;
+    }
 
-/* Profile portrait */
-.profile {
-  width: 166px;
-  height: 166px;
-  margin: 25px auto 23px;
-  border: 5px solid #fffdfd;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #e7c6ce;
-  box-shadow: 0 4px 22px rgba(117, 62, 78, .18);
-}
+    .star {
+      font-size: 23px;
+    }
 
-.profile img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 27%;
-}
+    .heart {
+      font-size: 19px;
+    }
 
-h1 {
-  margin: 8px 0 10px;
-  font-size: clamp(39px, 8vw, 57px);
-  font-weight: normal;
-  line-height: 1.08;
-  letter-spacing: -1.8px;
-}
+    .d1 { top: 9%; left: 12%; animation-delay: 0s; }
+    .d2 { top: 17%; right: 13%; animation-delay: 1s; }
+    .d3 { top: 36%; left: 7%; animation-delay: 2s; }
+    .d4 { top: 61%; right: 8%; animation-delay: 0.7s; }
+    .d5 { bottom: 13%; left: 17%; animation-delay: 1.5s; }
+    .d6 { bottom: 9%; right: 18%; animation-delay: 2.2s; }
+    .d7 { top: 76%; left: 6%; animation-delay: 1.2s; }
+    .d8 { top: 44%; right: 5%; animation-delay: 2.5s; }
+    .d9 { top: 5%; left: 47%; animation-delay: 0.5s; }
+    .d10 { bottom: 5%; left: 49%; animation-delay: 1.8s; }
 
-.heart-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 13px;
-  margin: 17px auto;
-  font-size: 27px;
-  color: #b7798a;
-}
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.78;
+      }
+      50% {
+        transform: translateY(-10px) rotate(8deg);
+        opacity: 1;
+      }
+    }
 
-.heart-divider span {
-  width: 28%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #bd8795);
-}
+    /* Main translucent glass rectangle */
+    .card {
+      width: min(440px, 100%);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 39px 32px 35px;
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      border-radius: 25px;
 
-.heart-divider span:last-child {
-  transform: rotate(180deg);
-}
+      /* Lighter transparency: more of your photo shows through */
+      background: rgba(248, 222, 233, 0.20);
+      -webkit-backdrop-filter: blur(7px);
+      backdrop-filter: blur(7px);
 
-.subtitle {
-  margin: 0;
-  font-size: 21px;
-  font-style: italic;
-}
+      box-shadow:
+        0 10px 40px rgba(88, 35, 57, 0.10),
+        inset 0 0 22px rgba(255, 255, 255, 0.09);
+    }
 
-/* VIEW MORE button */
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  margin-top: 32px;
-  padding: 18px 14px;
-  border-radius: 50px;
-  background: var(--rose);
-  color: white;
-  text-decoration: none;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 4px;
-  transition: transform .25s, background .25s;
-}
+    /* Stars and hearts inside the glass rectangle */
+    .card-decoration {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.98);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      pointer-events: none;
+      user-select: none;
+      animation: float 4.5s ease-in-out infinite;
+    }
 
-.button:hover {
-  background: #a96e7e;
-  transform: translateY(-2px);
-}
+    .c1 {
+      top: 17px;
+      left: 20px;
+      font-size: 19px;
+    }
 
-.button svg {
-  display: block;
-  flex-shrink: 0;
-}
+    .c2 {
+      top: 42px;
+      right: 22px;
+      font-size: 16px;
+      animation-delay: 1s;
+    }
 
-.footer {
-  margin-top: 22px;
-  font-size: 13px;
-  letter-spacing: 3px;
-}
+    .c3 {
+      top: 44%;
+      left: 15px;
+      font-size: 16px;
+      animation-delay: 1.6s;
+    }
 
-/* Floating screen decorations */
-.decor {
-  position: fixed;
-  z-index: 2;
-  pointer-events: none;
-  user-select: none;
-  color: #fffdfd;
-  text-shadow: 0 0 12px rgba(255, 255, 255, .9);
-  animation: float 5s ease-in-out infinite;
-}
+    .c4 {
+      top: 48%;
+      right: 16px;
+      font-size: 19px;
+      animation-delay: 0.6s;
+    }
 
-.decor.heart {
-  font-family: Georgia, serif;
-  font-size: 30px;
-}
+    .c5 {
+      bottom: 20px;
+      left: 29px;
+      font-size: 17px;
+      animation-delay: 1.3s;
+    }
 
-.decor.star {
-  font-size: 27px;
-  animation-name: twinkle;
-  animation-duration: 3.5s;
-}
+    .c6 {
+      bottom: 25px;
+      right: 25px;
+      font-size: 20px;
+      animation-delay: 2s;
+    }
 
-.d1 { top: 7%; left: 7%; animation-delay: -.8s; }
-.d2 { top: 15%; right: 8%; animation-delay: -2s; }
-.d3 { top: 42%; left: 4%; animation-delay: -1.4s; }
-.d4 { top: 48%; right: 5%; animation-delay: -.4s; }
-.d5 { bottom: 13%; left: 10%; animation-delay: -2.5s; }
-.d6 { bottom: 8%; right: 12%; animation-delay: -1s; }
-.d7 { top: 29%; right: 13%; animation-delay: -1.8s; }
-.d8 { bottom: 25%; left: 5%; animation-delay: -.3s; }
+    /* Circular portrait */
+    .portrait {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 23px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 5px 20px rgba(75, 35, 53, 0.16);
+      background: rgba(255, 255, 255, 0.12);
+    }
 
-/* Tiny decorations on the card */
-.card-sparkle {
-  position: absolute;
-  z-index: 3;
-  pointer-events: none;
-  user-select: none;
-  color: #fffdfd;
-  text-shadow: 0 0 10px rgba(255, 255, 255, .9);
-  animation: twinkle 3s ease-in-out infinite;
-}
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 35%;
+    }
 
-.card-sparkle.heart {
-  font-size: 26px;
-}
+    .welcome {
+      margin-bottom: 9px;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.96);
+    }
 
-.card-sparkle.star {
-  font-size: 23px;
-}
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(39px, 8vw, 53px);
+      line-height: 1.08;
+      letter-spacing: 0.3px;
+      text-shadow: 0 2px 15px rgba(95, 47, 65, 0.13);
+    }
 
-.cs1 { top: 28%; left: 7%; }
-.cs2 { top: 32%; right: 7%; animation-delay: -1s; }
-.cs3 { top: 42%; left: 12%; animation-delay: -1.5s; }
-.cs4 { top: 45%; right: 12%; animation-delay: -.5s; }
+    .subtitle {
+      margin-top: 12px;
+      margin-bottom: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-style: italic;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.97);
+    }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(-5deg);
-  }
-  50% {
-    transform: translateY(-13px) rotate(5deg);
-  }
-}
+    /* Link button */
+    .view-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      min-width: 175px;
+      padding: 14px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      border-radius: 2px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.7px;
+      background: rgba(255, 255, 255, 0.10);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
 
-@keyframes twinkle {
-  0%, 100% {
-    opacity: .55;
-    transform: scale(.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.12);
-  }
-}
+    .view-button:hover {
+      background: rgba(255, 255, 255, 0.23);
+      transform: translateY(-2px);
+    }
 
-/* Compact mobile layout */
-@media (max-width: 420px) {
-  body {
-    padding: 16px 13px;
-  }
+    .arrow {
+      font-size: 17px;
+      line-height: 10px;
+      font-weight: 300;
+      letter-spacing: 0;
+    }
 
-  .card {
-    width: 100%;
-    max-width: 340px;
-    padding: 23px 19px 20px;
-    border-radius: 19px;
-  }
+    .footer {
+      margin-top: 23px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.90);
+    }
 
-  .eyebrow {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-  }
+    /* Smaller, more compact card on mobile */
+    @media (max-width: 600px) {
+      body {
+        padding: 18px 24px;
+      }
 
-  .profile {
-    width: 112px;
-    height: 112px;
-    margin: 15px auto 15px;
-    border-width: 4px;
-  }
+      .card {
+        width: min(310px, 100%);
+        padding: 28px 22px 25px;
+        border-radius: 21px;
+        background: rgba(248, 222, 233, 0.16);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+      }
 
-  h1 {
-    font-size: clamp(34px, 9vw, 41px);
-    margin: 5px 0 7px;
-    letter-spacing: -1px;
-  }
+      .portrait {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 17px;
+      }
 
-  .heart-divider {
-    margin: 10px auto;
-    font-size: 22px;
-    gap: 10px;
-  }
+      .welcome {
+        font-size: 9px;
+        letter-spacing: 3px;
+        margin-bottom: 7px;
+      }
 
-  .subtitle {
-    font-size: 18px;
-  }
+      h1 {
+        font-size: clamp(35px, 10vw, 43px);
+      }
 
-  .button {
-    margin-top: 22px;
-    padding: 15px 10px;
-    font-size: 10px;
-    letter-spacing: 3px;
-    gap: 9px;
-  }
+      .subtitle {
+        margin-top: 9px;
+        margin-bottom: 21px;
+        font-size: 19px;
+      }
 
-  .footer {
-    margin-top: 13px;
-  }
+      .view-button {
+        min-width: 160px;
+        padding: 12px 17px;
+        gap: 12px;
+        font-size: 9px;
+      }
 
-  /* Keep decorations visible around the smaller card */
-  .decor.heart {
-    font-size: 25px;
-  }
+      .footer {
+        margin-top: 17px;
+        font-size: 8px;
+      }
 
-  .decor.star {
-    font-size: 22px;
-  }
+      .star {
+        font-size: 20px;
+      }
 
-  .d1 { top: 3%; left: 5%; }
-  .d2 { top: 9%; right: 4%; }
-  .d3 { top: 36%; left: 2%; }
-  .d4 { top: 43%; right: 2%; }
-  .d5 { bottom: 7%; left: 5%; }
-  .d6 { bottom: 4%; right: 7%; }
-  .d7 { top: 22%; right: 3%; }
-  .d8 { bottom: 23%; left: 2%; }
+      .heart {
+        font-size: 16px;
+      }
 
-  .card-sparkle.heart {
-    font-size: 20px;
-  }
+      .d1 { top: 8%; left: 8%; }
+      .d2 { top: 13%; right: 8%; }
+      .d3 { top: 36%; left: 5%; }
+      .d4 { top: 62%; right: 5%; }
+      .d5 { bottom: 12%; left: 9%; }
+      .d6 { bottom: 8%; right: 10%; }
+      .d7 { top: 78%; left: 4%; }
+      .d8 { top: 47%; right: 3%; }
+      .d9 { top: 5%; left: 47%; }
+      .d10 { bottom: 4%; left: 49%; }
 
-  .card-sparkle.star {
-    font-size: 18px;
-  }
+      .c1 { top: 12px; left: 13px; font-size: 16px; }
+      .c2 { top: 27px; right: 14px; font-size: 14px; }
+      .c3 { left: 10px; font-size: 14px; }
+      .c4 { right: 10px; font-size: 16px; }
+      .c5 { bottom: 13px; left: 16px; font-size: 15px; }
+      .c6 { bottom: 15px; right: 16px; font-size: 17px; }
+    }
 
-  .cs1 { top: 27%; left: 4%; }
-  .cs2 { top: 30%; right: 4%; }
-  .cs3 { top: 43%; left: 8%; }
-  .cs4 { top: 46%; right: 8%; }
-}
+    @media (max-height: 650px) {
+      .card {
+        padding-top: 22px;
+        padding-bottom: 20px;
+      }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-</style>
+      .portrait {
+        width: 76px;
+        height: 76px;
+        margin-bottom: 13px;
+      }
+
+      .subtitle {
+        margin-bottom: 17px;
+      }
+
+      .footer {
+        margin-top: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Floating decorations around the page -->
+  <span class="decoration star d1">✧</span>
+  <span class="decoration heart d2">♡</span>
+  <span class="decoration star d3">✦</span>
+  <span class="decoration heart d4">♡</span>
+  <span class="decoration star d5">✧</span>
+  <span class="decoration heart d6">♥</span>
+  <span class="decoration heart d7">♡</span>
+  <span class="decoration star d8">✧</span>
+  <span class="decoration star d9">✦</span>
+  <span class="decoration heart d10">♡</span>
 
-<!-- Floating white stars and hearts -->
-<span class="decor star d1">✦</span>
-<span class="decor heart d2">♡</span>
-<span class="decor star d3">✧</span>
-<span class="decor heart d4">♡</span>
-<span class="decor star d5">✦</span>
-<span class="decor heart d6">♡</span>
-<span class="decor star d7">✧</span>
-<span class="decor heart d8">♡</span>
+  <main class="card">
+    <!-- Decorations inside the rectangle -->
+    <span class="card-decoration c1">✧</span>
+    <span class="card-decoration c2">♡</span>
+    <span class="card-decoration c3">✦</span>
+    <span class="card-decoration c4">♡</span>
+    <span class="card-decoration c5">✧</span>
+    <span class="card-decoration c6">♥</span>
 
-<main class="card">
+    <div class="portrait">
+      <img src="londyn-photo.jpg" alt="Londyn Jade">
+    </div>
 
-  <div class="eyebrow">Welcome to my world</div>
+    <p class="welcome">Welcome to my world</p>
+    <h1>Londyn Jade</h1>
+    <p class="subtitle">more of me ♡</p>
 
-  <!-- White hearts and sparkles around your portrait -->
-  <span class="card-sparkle heart cs1">♡</span>
-  <span class="card-sparkle star cs2">✧</span>
-  <span class="card-sparkle star cs3">✦</span>
-  <span class="card-sparkle heart cs4">♡</span>
+    <a
+      class="view-button"
+      href="https://link.me/londyn.jade"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>VIEW MORE</span>
+      <span class="arrow">→</span>
+    </a>
 
-  <div class="profile">
-    <img src="londyn-photo.jpg.jpg" alt="Londyn Jade">
-  </div>
-
-  <h1>Londyn Jade</h1>
-
-  <div class="heart-divider" aria-hidden="true">
-    <span></span>♡<span></span>
-  </div>
-
-  <p class="subtitle">more of me ♡</p>
-
-  <a class="button"
-     href="https://link.me/londyn.jade"
-     target="_blank"
-     rel="noopener noreferrer">
-    VIEW MORE
-    <svg width="14" height="14" viewBox="0 0 24 24"
-         fill="none" stroke="currentColor"
-         stroke-width="1.8" stroke-linecap="round"
-         stroke-linejoin="round" aria-hidden="true">
-      <path d="M7 17 17 7"/>
-      <path d="M7 7h10v10"/>
-    </svg>
-  </a>
-
-  <div class="footer">♡</div>
-
-</main>
+    <p class="footer">WITH LOVE, LONDYN ♡</p>
+  </main>
 </body>
 </html>
