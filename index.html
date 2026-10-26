@@ -8,12 +8,19 @@
 <title>Londyn Jade</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 :root {
   --rose: #bd8795;
   --deep-rose: #8d5262;
-  --cream: #fff5f3;
+  --white: #fffdfd;
+}
+
+html {
+  min-height: 100%;
+  background: #d8afb9;
 }
 
 body {
@@ -28,47 +35,50 @@ body {
   overflow-x: hidden;
   font-family: Georgia, "Times New Roman", serif;
   background: #d8afb9;
+  color: var(--deep-rose);
 }
 
-/* Your actual photo fills the entire background */
+/* Full-screen background photo */
 body::before {
   content: "";
   position: fixed;
   inset: -2%;
   z-index: -2;
-  background:
-    url("londyn-photo.jpg") center 35% / cover no-repeat;
+  background-image: url("londyn-photo.jpg.jpg");
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
   transform: scale(1.02);
 }
 
-/* Pink color grade over the photo */
+/* Soft rosy color grade */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
+  pointer-events: none;
   background: linear-gradient(
     135deg,
-    rgba(210, 145, 164, .39),
+    rgba(210, 145, 164, .40),
     rgba(255, 226, 231, .28),
     rgba(153, 95, 116, .30)
   );
-  pointer-events: none;
 }
 
-/* Main glass card */
+/* Main translucent card */
 .card {
   position: relative;
   z-index: 1;
   isolation: isolate;
-  width: min(100%, 430px);
-  padding: 40px 26px 34px;
+  width: min(100%, 460px);
+  padding: 43px 30px 34px;
   text-align: center;
   color: var(--deep-rose);
-  background: rgba(255, 244, 243, .78);
+  background: rgba(255, 225, 232, .62);
   border: 1.5px solid rgba(255, 255, 255, .95);
   border-radius: 23px;
-  box-shadow: 0 15px 65px rgba(82, 39, 53, .15);
+  box-shadow: 0 15px 65px rgba(82, 39, 53, .16);
   backdrop-filter: blur(13px);
   -webkit-backdrop-filter: blur(13px);
 }
@@ -81,31 +91,29 @@ body::after {
   text-transform: uppercase;
 }
 
-/* Circular portrait */
+/* Profile portrait */
 .profile {
   width: 166px;
   height: 166px;
-  max-width: 55vw;
-  max-height: 55vw;
-  margin: 26px auto 24px;
-  border: 5px solid white;
+  margin: 25px auto 23px;
+  border: 5px solid #fffdfd;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 4px 22px rgba(117, 62, 78, .14);
   background: #e7c6ce;
+  box-shadow: 0 4px 22px rgba(117, 62, 78, .18);
 }
 
 .profile img {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
   object-position: center 27%;
 }
 
 h1 {
-  margin: 8px 0 12px;
-  font-size: clamp(39px, 10vw, 57px);
+  margin: 8px 0 10px;
+  font-size: clamp(39px, 8vw, 57px);
   font-weight: normal;
   line-height: 1.08;
   letter-spacing: -1.8px;
@@ -116,13 +124,14 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 13px;
-  margin: 20px auto;
+  margin: 17px auto;
   font-size: 27px;
+  color: #b7798a;
 }
 
 .heart-divider span {
-  height: 1px;
   width: 28%;
+  height: 1px;
   background: linear-gradient(90deg, transparent, #bd8795);
 }
 
@@ -136,10 +145,15 @@ h1 {
   font-style: italic;
 }
 
+/* VIEW MORE button */
 .button {
-  display: block;
-  margin-top: 34px;
-  padding: 19px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 32px;
+  padding: 18px 14px;
   border-radius: 50px;
   background: var(--rose);
   color: white;
@@ -155,58 +169,175 @@ h1 {
   transform: translateY(-2px);
 }
 
+.button svg {
+  display: block;
+  flex-shrink: 0;
+}
+
 .footer {
-  margin-top: 23px;
+  margin-top: 22px;
   font-size: 13px;
   letter-spacing: 3px;
 }
 
-/* Floating hearts and sparkles */
+/* Floating screen decorations */
 .decor {
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
   user-select: none;
-  color: rgba(255, 250, 250, .95);
-  text-shadow: 0 0 13px rgba(255, 255, 255, .75);
+  color: #fffdfd;
+  text-shadow: 0 0 12px rgba(255, 255, 255, .9);
   animation: float 5s ease-in-out infinite;
 }
 
-.heart {
+.decor.heart {
   font-family: Georgia, serif;
   font-size: 30px;
 }
 
-.star {
-  font-size: 28px;
+.decor.star {
+  font-size: 27px;
   animation-name: twinkle;
   animation-duration: 3.5s;
 }
 
-.d1 { top: 8%; left: 8%; animation-delay: -.8s; }
-.d2 { top: 19%; right: 10%; animation-delay: -2s; }
-.d3 { top: 43%; left: 5%; animation-delay: -1.4s; }
-.d4 { top: 55%; right: 7%; animation-delay: -.4s; }
-.d5 { bottom: 16%; left: 12%; animation-delay: -2.5s; }
-.d6 { bottom: 9%; right: 14%; animation-delay: -1s; }
-.d7 { top: 31%; right: 18%; animation-delay: -1.8s; }
-.d8 { bottom: 29%; left: 7%; animation-delay: -.3s; }
+.d1 { top: 7%; left: 7%; animation-delay: -.8s; }
+.d2 { top: 15%; right: 8%; animation-delay: -2s; }
+.d3 { top: 42%; left: 4%; animation-delay: -1.4s; }
+.d4 { top: 48%; right: 5%; animation-delay: -.4s; }
+.d5 { bottom: 13%; left: 10%; animation-delay: -2.5s; }
+.d6 { bottom: 8%; right: 12%; animation-delay: -1s; }
+.d7 { top: 29%; right: 13%; animation-delay: -1.8s; }
+.d8 { bottom: 25%; left: 5%; animation-delay: -.3s; }
+
+/* Tiny decorations on the card */
+.card-sparkle {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  color: #fffdfd;
+  text-shadow: 0 0 10px rgba(255, 255, 255, .9);
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.card-sparkle.heart {
+  font-size: 26px;
+}
+
+.card-sparkle.star {
+  font-size: 23px;
+}
+
+.cs1 { top: 28%; left: 7%; }
+.cs2 { top: 32%; right: 7%; animation-delay: -1s; }
+.cs3 { top: 42%; left: 12%; animation-delay: -1.5s; }
+.cs4 { top: 45%; right: 12%; animation-delay: -.5s; }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-5deg); }
-  50% { transform: translateY(-13px) rotate(5deg); }
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-13px) rotate(5deg);
+  }
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: .45; transform: scale(.8); }
-  50% { opacity: 1; transform: scale(1.15); }
+  0%, 100% {
+    opacity: .55;
+    transform: scale(.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
 }
 
+/* Compact mobile layout */
 @media (max-width: 420px) {
-  .card { padding: 34px 22px 29px; }
-  .profile { width: 145px; height: 145px; }
-  .eyebrow { letter-spacing: 3px; }
-  .subtitle { font-size: 19px; }
+  body {
+    padding: 16px 13px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 340px;
+    padding: 23px 19px 20px;
+    border-radius: 19px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+
+  .profile {
+    width: 112px;
+    height: 112px;
+    margin: 15px auto 15px;
+    border-width: 4px;
+  }
+
+  h1 {
+    font-size: clamp(34px, 9vw, 41px);
+    margin: 5px 0 7px;
+    letter-spacing: -1px;
+  }
+
+  .heart-divider {
+    margin: 10px auto;
+    font-size: 22px;
+    gap: 10px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .button {
+    margin-top: 22px;
+    padding: 15px 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    gap: 9px;
+  }
+
+  .footer {
+    margin-top: 13px;
+  }
+
+  /* Keep decorations visible around the smaller card */
+  .decor.heart {
+    font-size: 25px;
+  }
+
+  .decor.star {
+    font-size: 22px;
+  }
+
+  .d1 { top: 3%; left: 5%; }
+  .d2 { top: 9%; right: 4%; }
+  .d3 { top: 36%; left: 2%; }
+  .d4 { top: 43%; right: 2%; }
+  .d5 { bottom: 7%; left: 5%; }
+  .d6 { bottom: 4%; right: 7%; }
+  .d7 { top: 22%; right: 3%; }
+  .d8 { bottom: 23%; left: 2%; }
+
+  .card-sparkle.heart {
+    font-size: 20px;
+  }
+
+  .card-sparkle.star {
+    font-size: 18px;
+  }
+
+  .cs1 { top: 27%; left: 4%; }
+  .cs2 { top: 30%; right: 4%; }
+  .cs3 { top: 43%; left: 8%; }
+  .cs4 { top: 46%; right: 8%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -220,7 +351,7 @@ h1 {
 
 <body>
 
-<!-- Decorative elements behind the card -->
+<!-- Floating white stars and hearts -->
 <span class="decor star d1">✦</span>
 <span class="decor heart d2">♡</span>
 <span class="decor star d3">✧</span>
@@ -231,11 +362,17 @@ h1 {
 <span class="decor heart d8">♡</span>
 
 <main class="card">
+
   <div class="eyebrow">Welcome to my world</div>
 
+  <!-- White hearts and sparkles around your portrait -->
+  <span class="card-sparkle heart cs1">♡</span>
+  <span class="card-sparkle star cs2">✧</span>
+  <span class="card-sparkle star cs3">✦</span>
+  <span class="card-sparkle heart cs4">♡</span>
+
   <div class="profile">
-    <img src="londyn-photo.jpg"
-         alt="Londyn Jade">
+    <img src="londyn-photo.jpg.jpg" alt="Londyn Jade">
   </div>
 
   <h1>Londyn Jade</h1>
@@ -250,11 +387,18 @@ h1 {
      href="https://link.me/londyn.jade"
      target="_blank"
      rel="noopener noreferrer">
-    VIEW MORE ↗
+    VIEW MORE
+    <svg width="14" height="14" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="1.8" stroke-linecap="round"
+         stroke-linejoin="round" aria-hidden="true">
+      <path d="M7 17 17 7"/>
+      <path d="M7 7h10v10"/>
+    </svg>
   </a>
 
   <div class="footer">♡</div>
-</main>
 
+</main>
 </body>
 </html>
